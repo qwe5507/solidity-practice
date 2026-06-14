@@ -282,6 +282,25 @@
 				],
 				"stateMutability": "nonpayable",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "withdraw",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "success",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -297,7 +316,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/MyFirstToken.sol": "MyFirstToken"
+			"contracts/WrappedEtherToken.sol": "WrappedEtherToken"
 		},
 		"evmVersion": "shanghai",
 		"libraries": {},
@@ -311,12 +330,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/MyFirstToken.sol": {
-			"keccak256": "0x608bed3bb6107b5a0762ded3f266b2beaaf8b19dd2f34e77be9c2fe32bb6001e",
+		"contracts/WrappedEtherToken.sol": {
+			"keccak256": "0x93ba28faca372c342235841a92d041a1f591869446c03b05e822669f45f499e6",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://20c2b9039814f33af43121264cdbcd4b4aa5e4fb9243866f56d82b4d6a620717",
-				"dweb:/ipfs/QmYtTsaYFvULkno7qz8aYzwNP7GCf89utHox8Kk1qbbjaF"
+				"bzz-raw://bf3c9280d78fb60cd031d1c514c0561d9fa16fba51ad62cfc1b52110e3bd2b21",
+				"dweb:/ipfs/QmfQrmWT8v7T1ppDxZPSk3uHrpXHAoXbarxqgyobkyXSUB"
 			]
 		}
 	},

@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.20;
 
-contract MyFirstToken {
+contract WrappedEtherToken {
     // name, symbol, decimals
-    string public name = "My First Contract";
-    string public symbol = "MFT";
+    string public name = "Jinhyeon Wrapped Ether";
+    string public symbol = "jhWETH";
     uint public decimals = 18;
     uint public totalSupply = 0; // mint 할 때마다 증가
 
@@ -80,5 +80,31 @@ contract MyFirstToken {
     ) public view returns(uint amount) {
         return allowances[owner][spender];
     }
-    // totalSupply(*)
+
+    // ethToToken()
+    function deposit() public payable returns (bool success) {
+        // 얼마를 받아서(payable, msg.value), 누구에게 WETH를 민팅 해줄까? 여기선 자기자신
+        address owner = msg.sender;
+        uint amount = msg.value; // 유저가 보낸 이더
+
+        balances[owner] += amount; 
+        totalSupply += amount;
+        emit Transfer(address(0), owner, amount);
+
+        return true;
+    }
+
+    // tokenToEth() 
+    function withdraw(uint tokenAmount) public returns (bool success) {
+        address owner = msg.sender;
+        balances[owner] -= tokenAmount;
+        totalSupply -= tokenAmount;
+
+        payable(owner).transfer(tokenAmount);
+
+        emit Transfer(owner, address(0), tokenAmount);
+        
+        return true;
+    }
+     
 }
