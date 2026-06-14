@@ -1,0 +1,18 @@
+{
+  "contracts/HelloWorld.sol": {
+    "__sources__": {
+      "contracts/HelloWorld.sol": {
+        "content": "// SPDX-License-Identifier: MIT\npragma solidity >=0.6.12 <0.9.0;\n\ncontract HelloWorld {\n  uint public numbers;\n  uint private secret;\n  \n  /**\n   * @dev Prints Hello World string\n   */\n  function print() public pure returns (string memory) {\n    return \"Hello World!\";\n  }\n}\n",
+        "file": "contracts/HelloWorld.sol"
+      }
+    }
+  },
+  "contracts/Counter.sol": {
+    "__sources__": {
+      "contracts/Counter.sol": {
+        "content": "// SPDX-License-Identifier: MIT\npragma solidity 0.8.20;\n\ncontract Ownable {\n    address public owner;\n\n    constructor() {\n        owner = msg.sender;\n    }\n\n    modifier onlyOwner() {\n        require(msg.sender == owner, \"Only Owner!\");\n        _;\n    }\n}\n\ncontract Counter is Ownable {\n    uint private value = 0;\n\n    function getValue() public view returns (uint) {\n        return value;\n        // view, pure, constant, payable\n    }\n\n    function increment() public payable costs(1) {\n        //require(msg.value == 1 ether, \"1 Ether\");\n        value = value + 1;\n    }\n\n    event Reset(address owner, uint currentValue);\n\n    modifier costs(uint amount) {\n        require(msg.value >= amount * 1 ether);\n        _;\n    }\n\n    function reset() public onlyOwner {\n        emit Reset(msg.sender, value);\n        value = 0;\n    }\n\n    function withdraw() public onlyOwner {\n\n        payable(owner).transfer(address(this).balance);\n    }\n}",
+        "file": "contracts/Counter.sol"
+      }
+    }
+  }
+}
